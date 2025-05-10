@@ -1,0 +1,295 @@
+/* get-cifras-web/app/static/css/style.css */
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f2f5;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 800px;
+  margin: 30px auto;
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+h1,
+h2 {
+  color: #1a237e;
+  /* Um azul mais escuro */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 2.2em;
+}
+
+h2 {
+  font-size: 1.8em;
+  margin-top: 30px;
+}
+
+
+form {
+  margin-bottom: 25px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+}
+
+input[type="text"] {
+  width: calc(100% - 24px);
+  /* Considera padding */
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  box-sizing: border-box;
+  /* Importante para o width calc */
+}
+
+input[type="text"]:focus {
+  border-color: #3f51b5;
+  /* Azul índigo */
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(63, 81, 181, .25);
+}
+
+
+button[type="submit"],
+.button-link {
+  background-color: #3f51b5;
+  /* Azul índigo */
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  /* Para .button-link */
+  display: inline-block;
+  /* Para .button-link */
+  margin-right: 10px;
+  /* Espaço entre botões */
+}
+
+button[type="submit"]:hover,
+.button-link:hover {
+  background-color: #303f9f;
+  /* Tom mais escuro do azul */
+}
+
+.button-secondary {
+  background-color: #6c757d;
+  /* Cinza */
+}
+
+.button-secondary:hover {
+  background-color: #5a6268;
+}
+
+
+.song-list-container {
+  margin-top: 20px;
+}
+
+.song-list {
+  list-style-type: none;
+  padding: 0;
+  max-height: 450px;
+  overflow-y: auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.song-list li {
+  padding: 10px 12px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  /* Para alinhar checkbox e label */
+  align-items: center;
+  /* Alinhamento vertical */
+}
+
+.song-list li:last-child {
+  border-bottom: none;
+}
+
+.song-list input[type="checkbox"] {
+  margin-right: 12px;
+  transform: scale(1.2);
+  /* Checkbox um pouco maior */
+  cursor: pointer;
+}
+
+.song-list label {
+  /* Label do checkbox */
+  font-weight: normal;
+  margin-bottom: 0;
+  /* Reset margin from global label */
+  cursor: pointer;
+  flex-grow: 1;
+  /* Para ocupar espaço restante */
+}
+
+.flash-messages {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.flash-messages li {
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  font-size: 0.95em;
+}
+
+.flash-messages .error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-color: #f5c6cb;
+}
+
+.flash-messages .warning {
+  background-color: #fff3cd;
+  color: #856404;
+  border-color: #ffeeba;
+}
+
+.flash-messages .info {
+  background-color: #d1ecf1;
+  color: #0c5460;
+  border-color: #bee5eb;
+}
+
+.flash-messages .success {
+  background-color: #d4edda;
+  color: #155724;
+  border-color: #c3e6cb;
+}
+
+.no-songs {
+  text-align: center;
+  color: #777;
+  margin-top: 25px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.actions-bar {
+  margin-top: 25px;
+  text-align: right;
+  /* Alinha botões à direita */
+}
+
+.actions-bar button,
+.actions-bar .button-link {
+  margin-left: 10px;
+  /* Adiciona espaço à esquerda se houver múltiplos botões */
+  margin-right: 0;
+}
+
+.search-form-actions {
+  display: flex;
+  align-items: center;
+  /* Alinha o botão e o link de limpar verticalmente */
+}
+
+.search-form-actions input[type="text"] {
+  flex-grow: 1;
+  /* Faz o input de texto ocupar o espaço disponível */
+  margin-right: 10px;
+  /* Espaço entre o input e o botão */
+  margin-bottom: 0;
+  /* Remove margem inferior do input dentro do flex container */
+}
+
+.search-form-actions button[type="submit"] {
+  margin-right: 0;
+  /* Remove margem direita do botão de busca */
+}
+
+.clear-button-container {
+  margin-left: 10px;
+  /* Espaço entre o botão de busca e o de limpar */
+}
+
+
+/* Responsividade básica */
+@media (max-width: 600px) {
+  .container {
+    margin: 15px;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.8em;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  button[type="submit"],
+  .button-link {
+    padding: 10px 15px;
+    font-size: 0.95em;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .search-form-actions {
+    flex-direction: column;
+    /* Empilha input e botões em telas menores */
+  }
+
+  .search-form-actions input[type="text"] {
+    width: 100%;
+    /* Input ocupa toda a largura */
+    margin-right: 0;
+    margin-bottom: 10px;
+    /* Espaço antes dos botões */
+  }
+
+  .search-form-actions button[type="submit"],
+  .clear-button-container .button-link {
+    width: 100%;
+    margin-left: 0;
+    /* Remove margem esquerda do botão de limpar */
+  }
+
+  .clear-button-container {
+    margin-left: 0;
+    /* Remove margem esquerda do container do botão de limpar */
+    width: 100%;
+  }
+
+  .actions-bar {
+    text-align: center;
+  }
+
+  .actions-bar button {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+}

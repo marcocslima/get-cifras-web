@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Cifras Web - CifraClub</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <!-- Favicon (opcional, coloque um arquivo favicon.ico em app/static/) -->
+  <!-- <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"> -->
+</head>
+
+<body>
+  <div class="container">
+    <h1>Buscador de Cifras</h1>
+    <p style="text-align:center; margin-top:-15px; margin-bottom:20px; color: #555;">Extraia links de impressão do
+      CifraClub</p>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <ul class="flash-messages">
+      {% for category, message in messages %}
+      <li class="{{ category }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+
+    <form method="POST" action="{{ url_for('index') }}" class="search-form">
+      <label for="artista">Nome do Artista:</label>
+      <div class="search-form-actions">
+        <input type="text" id="artista" name="artista" value="{{ artista_buscado or '' }}"
+          placeholder="Ex: Legião Urbana" required>
+        <button type="submit" name="buscar_artista" value="buscar">Buscar Músicas</button>
+        {% if artista_buscado %}
+        <div class="clear-button-container">
+          <a href="{{ url_for('limpar_busca') }}" class="button-link button-secondary">Limpar</a>
+        </div>
+        {% endif %}
+      </div>
+    </form>
+
+    {% if musicas %}
+    <div class="song-list-container">
+      <h2>Músicas encontradas para "{{ artista_buscado|title }}":</h2>
+      <form method="POST" action="{{ url_for('gerar_csv') }}">
+        <!-- Campo oculto para passar o nome original do artista para o nome do arquivo CSV -->
+        <input type="hidden" name="artista_nome_original_csv" value="{{ artista_buscado }}">
+
+        <p>Selecione as músicas para gerar o CSV com os links de impressão:</p>
+        <ul class="song-list">
+          {% for nome, link_relativo in musicas %}
+          <li>
+            <input type="checkbox" name="musicas_selecionadas" value="{{ nome }}|{{ link_relativo }}"
+              id="song_{{ loop.index }}">
+            <label for="song_{{ loop.index }}">{{ nome }}</label>
+          </li>
+          {% else %}
+          <li>Nenhuma música na lista para este artista.</li>
+          {% endfor %}
+        </ul>
+        {% if musicas %} <!-- Mostrar botão apenas se houver musicas -->
+        <div class="actions-bar">
+          <button type="submit">Gerar CSV das Selecionadas</button>
+        </div>
+        {% endif %}
+      </form>
+    </div>
+    {% elif request.method == 'POST' and 'buscar_artista' in request.form and not musicas and not
+    get_flashed_messages(category_filter=["error","warning"]) %}
+    <!-- Mostra esta mensagem se uma busca foi feita (POST), não retornou músicas e não há mensagens de erro/aviso já exibidas -->
+    <p class="no-songs">Nenhuma música encontrada para "{{ artista_buscado|title }}". Verifique o nome do artista.</p>
+    {% endif %}
+  </div>
+
+  <footer>
+    <p style="text-align:center; font-size:0.9em; color:#777; margin-top:30px;">
+      Get Cifras Web - Criado com Flask.
+    </p>
+  </footer>
+</body>
+
+</html>

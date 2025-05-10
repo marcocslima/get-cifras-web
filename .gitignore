@@ -1,0 +1,73 @@
+# Ambientes Virtuais
+venv/
+.venv/
+env/
+ENV/
+*.pyenv
+pip-selfcheck.json
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+bin/
+var/
+sdist/
+*.egg
+MANIFEST
+
+# Arquivos de configuração do editor/IDE
+.vscode/
+.idea/
+*.project
+*.pydevproject
+*.sublime-project
+*.sublime-workspace
+nbproject/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Arquivos de log
+*.log
+logs/
+*.log.*
+
+# Arquivos de ambiente (se você usar .env para variáveis de ambiente)
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# Arquivos de banco de dados SQLite (se aplicável)
+*.sqlite3
+*.db
+*.db3
+
+# Pasta de instância do Flask (se usada)
+instance/
+
+# Cobertura de Testes
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+
+# Python profiler output
+.prof
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
